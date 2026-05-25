@@ -1,0 +1,92 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f9f9;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+section {
+  padding: 1.5rem 2rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  color: #0077b6;
+  border-bottom: 2px solid #00b4d8;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 0.8rem 0;
+}
+
+ul li strong {
+  color: #0077b6;
+}
+
+ul li a {
+  display: inline-block;
+  margin-top: 0.3rem;
+  color: #00b4d8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0077b6;
+  color: white;
+  margin-top: 2rem;
+}
+
+.info {
+    background: #e0f7fa;
+    padding: 1rem;
+    border-left: 4px solid #00b4d8;
+    margin-bottom: 1rem;
+}
+.education {
+    background: #e0f7fa;
+    padding: 1rem;
+    border-left: 4px solid #00b4d8;
+    margin-bottom: 1rem;
+}
+.certifications {
+    background: #e0f7fa;
+    padding: 1rem;
+    border-left: 4px solid #00b4d8;
+    margin-bottom: 1rem;
+}

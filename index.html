@@ -1,250 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jhostyn Valencia Balaguera — Frontend Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #0a0a0f;
-    min-height: 100vh;
-    color: #e8e4f0;
-    padding-bottom: 60px;
-  }
-
-  .blob1 { position: fixed; top: -120px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, #7c3aed33 0%, transparent 70%); pointer-events: none; z-index: 0; }
-  .blob2 { position: fixed; top: 200px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, #ec489933 0%, transparent 70%); pointer-events: none; z-index: 0; }
-  .blob3 { position: fixed; top: 600px; left: 30%; width: 300px; height: 300px; background: radial-gradient(circle, #06b6d433 0%, transparent 70%); pointer-events: none; z-index: 0; }
-
-  .hv-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 24px; }
-
-  /* HERO */
-  .hero { padding: 56px 0 44px; display: flex; flex-direction: column; gap: 18px; }
-  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed22, #ec489922); border: 1px solid #7c3aed55; border-radius: 100px; padding: 6px 18px; font-size: 12px; color: #a78bfa; letter-spacing: 0.1em; text-transform: uppercase; width: fit-content; }
-  .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #a78bfa; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
-
-  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(40px, 8vw, 64px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; }
-  .hero-name .line1 { color: #f0ecff; }
-  .hero-name .line2 { background: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  .hero-role { font-size: 18px; color: #9ca3af; font-weight: 300; }
-  .hero-role strong { color: #c4b5fd; font-weight: 500; }
-
-  .hero-contacts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-  .contact-chip { display: flex; align-items: center; gap: 8px; background: #ffffff08; border: 1px solid #ffffff15; border-radius: 100px; padding: 8px 16px; font-size: 13px; color: #d1d5db; text-decoration: none; transition: all 0.2s; }
-  .contact-chip:hover { background: #7c3aed22; border-color: #7c3aed66; color: #c4b5fd; }
-  .contact-chip i { font-size: 15px; color: #a78bfa; }
-
-  .portfolio-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #7c3aed, #ec4899); border: none; border-radius: 12px; padding: 14px 26px; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: #fff; cursor: pointer; text-decoration: none; transition: all 0.25s; margin-top: 6px; }
-  .portfolio-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px #7c3aed55; }
-  .portfolio-btn i { font-size: 18px; }
-
-  /* DIVIDER */
-  .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #7c3aed44, #ec489944, transparent); margin: 40px 0 30px; }
-
-  /* SECTION TITLE */
-  .sec-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #6b7280; display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-  .sec-title::before { content: ''; display: block; width: 22px; height: 2px; background: linear-gradient(90deg, #a78bfa, #f472b6); border-radius: 2px; }
-
-  /* EDUCACIÓN */
-  .edu-card { background: linear-gradient(135deg, #7c3aed11, #1e1b4b22); border: 1px solid #7c3aed33; border-radius: 16px; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; }
-  .edu-icon { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, #7c3aed, #4f46e5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .edu-icon i { font-size: 22px; color: #fff; }
-  .edu-info { flex: 1; }
-  .edu-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #f0ecff; margin-bottom: 4px; }
-  .edu-school { font-size: 14px; color: #a78bfa; margin-bottom: 4px; }
-  .edu-date { font-size: 12px; color: #6b7280; }
-
-  /* TOAST */
-  .toast { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff; padding: 12px 22px; border-radius: 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; z-index: 9999; opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; display: flex; align-items: center; gap: 8px; }
-  .toast.show { opacity: 1; transform: translateY(0); }
-
-  /* CERTS */
-  .certs-grid { display: flex; flex-direction: column; gap: 12px; }
-
-  .cert-card { background: #ffffff05; border: 1px solid #ffffff10; border-radius: 14px; padding: 18px 22px; transition: all 0.25s; }
-  .cert-card:hover { background: #ffffff09; border-color: #ffffff1a; transform: translateX(4px); }
-
-  .cert-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
-  .cert-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-  .cert-info { flex: 1; }
-  .cert-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: #f0ecff; line-height: 1.35; margin-bottom: 5px; }
-  .cert-meta { font-size: 12px; color: #6b7280; display: flex; align-items: center; gap: 6px; }
-  .cert-meta i { font-size: 13px; }
-
-  .cert-link-area { display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid #ffffff08; }
-  .cert-link-input { flex: 1; background: #ffffff08; border: 1px solid #ffffff12; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #d1d5db; font-family: 'DM Sans', sans-serif; outline: none; transition: all 0.2s; }
-  .cert-link-input:focus { border-color: #7c3aed66; background: #7c3aed0d; }
-  .cert-link-input::placeholder { color: #374151; }
-  .cert-saved-badge { display: none; align-items: center; gap: 5px; font-size: 11px; color: #4ade80; background: #4ade8011; border: 1px solid #4ade8033; border-radius: 6px; padding: 4px 10px; white-space: nowrap; flex-shrink: 0; }
-  .cert-saved-badge.visible { display: flex; }
-  .cert-go-btn { background: transparent; border: 1px solid #ffffff15; border-radius: 8px; padding: 8px 14px; color: #a78bfa; cursor: pointer; font-size: 12px; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: flex; align-items: center; gap: 5px; white-space: nowrap; flex-shrink: 0; }
-  .cert-go-btn:hover { background: #7c3aed22; border-color: #7c3aed55; }
-  .cert-go-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .dot-purple { background: #a78bfa; }
-  .dot-pink   { background: #f472b6; }
-  .dot-cyan   { background: #38bdf8; }
-  .dot-green  { background: #4ade80; }
-  .dot-amber  { background: #fbbf24; }
-  .dot-coral  { background: #fb7185; }
-
-  /* FOOTER */
-  .hv-footer { text-align: center; padding-top: 56px; font-size: 13px; color: #374151; }
-  .hv-footer span { color: #a78bfa; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoja de Vida - Jhostyn Valencia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>Jhostyn Valencia Balaguera</h1>
+    <p>Frontend Developer | Bachiller Técnico Industrial</p>
+  </header>
 
-<div class="blob1"></div>
-<div class="blob2"></div>
-<div class="blob3"></div>
+  <section class="info">
+    <h2>Información Personal</h2>
+    <ul>
+      <li><strong>Documento:</strong> 1104701301</li>
+      <li><strong>Fecha de nacimiento:</strong> 17/06/2007</li>
+      <li><strong>Nacionalidad:</strong> Colombiana</li>
+      <li><strong>Teléfono:</strong> (+57) 3172451697</li>
+      <li><strong>Email:</strong> jhos.balaguera@gmail.com</li>
+      <li><strong>LinkedIn:</strong> Jhostyn Balaguera</li>
+      <li><strong>Dirección:</strong> Cra 3 # 12 28, Casabianca, Tolima</li>
+    </ul>
+  </section>
 
-<div class="toast" id="toast"><i class="ti ti-check"></i> <span id="toast-msg">Enlace guardado</span></div>
+  <section class="education">
+    <h2>Educación</h2>
+    <p><strong>Bachiller Técnico Industrial</strong> - Jorge Eliecer Gaitan Ayala (2019 - 2024)</p>
+  </section>
 
-<div class="hv-inner">
+  <section class="certifications">
+    <h2>Certificaciones</h2>
+    <ul>
+      <li>
+        Frontend Developer - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/2467-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Javascript: Manipulación del DOM - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/10135-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Introducción a la Terminal y Línea de Comandos - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/12040-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Git y GitHub - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/11059-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Fundamentos de JavaScript - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/10266-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Curso Práctico de Frontend Developer - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/2477-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        HTML y CSS - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/1758-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Transformaciones y Transiciones en CSS - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/2336-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Arquitecturas CSS - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/12294-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Claude AI - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/12651-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Django - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/9574-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Introducción al Backend - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/4656-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+      <li>
+        Ciberseguridad: Prevención de Ataques Informáticos - Platzi (2026) <br>
+        <a href="https://platzi.com/p/valenciabalaguerajhostyn/curso/8850-course/diploma/detalle/" target="_blank">Ver diploma 🫣</a>
+      </li>
+    </ul>
+  </section>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-tag"><div class="dot"></div>Frontend Developer</div>
-    <div class="hero-name">
-      <div class="line1">Jhostyn Valencia</div>
-      <div class="line2">Balaguera</div>
-    </div>
-    <div class="hero-role">Desarrollador web &nbsp;·&nbsp; <strong>HTML · CSS · JavaScript · Git</strong></div>
-    <div class="hero-contacts">
-      <a href="mailto:jhos.balaguera@gmail.com" class="contact-chip"><i class="ti ti-mail"></i>jhos.balaguera@gmail.com</a>
-      <a href="tel:+573172451697" class="contact-chip"><i class="ti ti-phone"></i>(+57) 317 245 1697</a>
-      <a href="https://www.linkedin.com/in/jhostyn-balaguera" target="_blank" class="contact-chip"><i class="ti ti-brand-linkedin"></i>Jhostyn Balaguera</a>
-      <a href="https://my-portafolio-iota.vercel.app" target="_blank" class="contact-chip"><i class="ti ti-map-pin"></i>Casabianca, Tolima</a>
-    </div>
-    <a href="https://my-portafolio-iota.vercel.app" target="_blank" class="portfolio-btn">
-      <i class="ti ti-code"></i>Ver mi portafolio <i class="ti ti-arrow-up-right"></i>
-    </a>
-  </div>
-
-  <div class="section-divider"></div>
-
-  <!-- EDUCACIÓN -->
-  <div class="sec-title">Educación</div>
-  <div class="edu-card">
-    <div class="edu-icon"><i class="ti ti-school"></i></div>
-    <div class="edu-info">
-      <div class="edu-title">Bachiller Técnico Industrial</div>
-      <div class="edu-school">Jorge Eliécer Gaitán Ayala</div>
-      <div class="edu-date">Enero 2019 – Noviembre 2024</div>
-    </div>
-  </div>
-
-  <div class="section-divider"></div>
-
-  <!-- CERTIFICACIONES -->
-  <div class="sec-title">Certificaciones</div>
-  <div class="certs-grid" id="certs-container"></div>
-
-  <div class="hv-footer">Construido con <span>♥</span> · Jhostyn Valencia Balaguera · 2026</div>
-
-</div>
-
-<script>
-const STORAGE_KEY = 'jhostyn_cert_links';
-
-const certs = [
-  { id: 'frontend-dev',        name: 'Frontend Developer',                                              date: 'Mar 2026', color: 'dot-purple' },
-  { id: 'frontend-dev-pract',  name: 'Curso Práctico de Frontend Developer',                            date: 'Mar 2026', color: 'dot-purple' },
-  { id: 'js-dom',              name: 'Javascript: Manipulación del DOM',                                date: 'Feb 2026', color: 'dot-cyan'   },
-  { id: 'js-fundamentos',      name: 'Fundamentos de JavaScript',                                       date: 'Abr 2026', color: 'dot-cyan'   },
-  { id: 'html',                name: 'Curso de HTML',                                                   date: 'Feb 2026', color: 'dot-pink'   },
-  { id: 'html-css-pract',      name: 'Curso Práctico de HTML y CSS',                                    date: 'Mar 2026', color: 'dot-pink'   },
-  { id: 'css',                 name: 'Curso de CSS',                                                    date: 'Feb 2026', color: 'dot-pink'   },
-  { id: 'css-trans',           name: 'Curso de Transformaciones y Transiciones en CSS',                 date: 'Mar 2026', color: 'dot-pink'   },
-  { id: 'css-arq',             name: 'Curso de Arquitecturas CSS',                                      date: 'Mar 2026', color: 'dot-pink'   },
-  { id: 'git',                 name: 'Curso de Git y GitHub',                                           date: 'May 2026', color: 'dot-amber'  },
-  { id: 'terminal',            name: 'Introducción a la terminal y línea de comandos',                  date: 'May 2026', color: 'dot-amber'  },
-  { id: 'ing-software',        name: 'Fundamentos de Ingeniería de Software',                           date: 'Mar 2026', color: 'dot-green'  },
-  { id: 'backend-intro',       name: 'Introducción al desarrollo del Backend',                          date: 'May 2026', color: 'dot-green'  },
-  { id: 'django',              name: 'Curso de Django',                                                 date: 'Mar 2026', color: 'dot-green'  },
-  { id: 'claude-ai',           name: 'Curso de Claude AI',                                             date: 'Mar 2026', color: 'dot-coral'  },
-  { id: 'claude-code',         name: 'Curso de Claude Code',                                           date: 'Mar 2026', color: 'dot-coral'  },
-  { id: 'ciberseguridad',      name: 'Introducción a Ciberseguridad: Prevención de Ataques Informáticos', date: 'Mar 2026', color: 'dot-coral' },
-];
-
-function loadLinks() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
-}
-function saveLinks(data) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.classList.remove('show'), 2500);
-}
-
-const savedLinks = loadLinks();
-const container = document.getElementById('certs-container');
-
-certs.forEach(cert => {
-  const saved = savedLinks[cert.id] || '';
-
-  const card = document.createElement('div');
-  card.className = 'cert-card';
-
-  card.innerHTML = `
-    <div class="cert-top">
-      <div class="cert-dot ${cert.color}"></div>
-      <div class="cert-info">
-        <div class="cert-name">${cert.name}</div>
-        <div class="cert-meta"><i class="ti ti-certificate"></i>Platzi &nbsp;·&nbsp; <i class="ti ti-calendar"></i>${cert.date}</div>
-      </div>
-    </div>
-    <div class="cert-link-area">
-      <input class="cert-link-input" type="url" placeholder="Pega aquí el enlace del certificado..." value="${saved}" data-id="${cert.id}" />
-      <div class="cert-saved-badge ${saved ? 'visible' : ''}"><i class="ti ti-check" style="font-size:12px"></i>Guardado</div>
-      <button class="cert-go-btn" data-id="${cert.id}" ${saved ? '' : 'disabled'}>
-        <i class="ti ti-external-link"></i> Abrir
-      </button>
-    </div>
-  `;
-
-  container.appendChild(card);
-
-  const input = card.querySelector('.cert-link-input');
-  const badge = card.querySelector('.cert-saved-badge');
-  const btn   = card.querySelector('.cert-go-btn');
-
-  input.addEventListener('input', () => {
-    const val = input.value.trim();
-    const data = loadLinks();
-    if (val) {
-      data[cert.id] = val;
-      badge.classList.add('visible');
-      btn.disabled = false;
-    } else {
-      delete data[cert.id];
-      badge.classList.remove('visible');
-      btn.disabled = true;
-    }
-    saveLinks(data);
-    showToast(val ? 'Enlace guardado automáticamente' : 'Enlace eliminado');
-  });
-
-  btn.addEventListener('click', () => {
-    const val = input.value.trim();
-    if (!val) return;
-    window.open(val.startsWith('http') ? val : 'https://' + val, '_blank');
-  });
-});
-</script>
+  <footer>
+    <p>© 2026 - Jhostyn Valencia Balaguera</p>
+  </footer>
 </body>
 </html>
